@@ -42,6 +42,7 @@ import Nvidia from "./Nvidia";
 import Ollama from "./Ollama";
 import OpenAI from "./OpenAI";
 import OpenRouter from "./OpenRouter";
+import { Relace } from "./Relace";
 import Replicate from "./Replicate";
 import SageMaker from "./SageMaker";
 import SambaNova from "./SambaNova";
@@ -104,6 +105,7 @@ export const LLMClasses = [
   xAI,
   SiliconFlow,
   Scaleway,
+  Relace,
 ];
 
 export async function llmFromDescription(
