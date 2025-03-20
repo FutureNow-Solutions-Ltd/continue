@@ -48,6 +48,8 @@ export function constructLlmApi(config: LLMConfig): BaseLlmApi | undefined {
       return new LogikHubApi(config);
     case "relace":
       return new RelaceApi(config);
+    case "logikhub":
+      return new LogikHubApi(config);
     case "x-ai":
       return openAICompatible("https://api.x.ai/v1/", config);
     case "voyage":
