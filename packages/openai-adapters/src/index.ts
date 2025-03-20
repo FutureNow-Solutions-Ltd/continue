@@ -7,6 +7,7 @@ import { CohereApi } from "./apis/Cohere.js";
 import { DeepSeekApi } from "./apis/DeepSeek.js";
 import { GeminiApi } from "./apis/Gemini.js";
 import { JinaApi } from "./apis/Jina.js";
+import { LogikHubApi } from "./apis/LogikHub.js";
 import { MockApi } from "./apis/Mock.js";
 import { MoonshotApi } from "./apis/Moonshot.js";
 import { OpenAIApi } from "./apis/OpenAI.js";
@@ -42,6 +43,8 @@ export function constructLlmApi(config: LLMConfig): BaseLlmApi | undefined {
       return new DeepSeekApi(config);
     case "moonshot":
       return new MoonshotApi(config);
+    case "logikhub":
+      return new LogikHubApi(config);
     case "x-ai":
       return openAICompatible("https://api.x.ai/v1/", config);
     case "voyage":

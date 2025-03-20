@@ -55,6 +55,7 @@ export const OpenAIConfigSchema = BasePlusConfig.extend({
     z.literal("x-ai"),
     z.literal("scaleway"),
     z.literal("ncompass"),
+    z.literal("logikhub"),
   ]),
 });
 export type OpenAIConfig = z.infer<typeof OpenAIConfigSchema>;
@@ -102,6 +103,11 @@ export const JinaConfigSchema = OpenAIConfigSchema.extend({
 });
 export type JinaConfig = z.infer<typeof JinaConfigSchema>;
 
+export const LogikHubConfigSchema = OpenAIConfigSchema.extend({
+  provider: z.literal("logikhub"),
+});
+export type LogikHubConfig = z.infer<typeof LogikHubConfigSchema>;
+
 // Discriminated union
 export const LLMConfigSchema = z.discriminatedUnion("provider", [
   OpenAIConfigSchema,
@@ -112,6 +118,7 @@ export const LLMConfigSchema = z.discriminatedUnion("provider", [
   GeminiConfigSchema,
   AnthropicConfigSchema,
   JinaConfigSchema,
+  LogikHubConfigSchema,
   MockConfigSchema,
 ]);
 export type LLMConfig = z.infer<typeof LLMConfigSchema>;

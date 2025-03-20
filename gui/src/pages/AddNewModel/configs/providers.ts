@@ -560,6 +560,26 @@ Select the \`GPT-4o\` model below to complete your provider configuration, but n
     downloadUrl:
       "https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#quickstart",
   },
+  logikhub: {
+    title: "LogikHub",
+    provider: "logikhub",
+    description:
+      "Use LogikHub for chat completions and autocomplete without an API key.",
+    longDescription:
+      "Sign in with LogikHub to retrieve a JWT token. Provide your LogikHub API Base URL and let LogikHub’s authentication mechanism handle credentials.",
+    icon: "logikhub.png",
+    tags: [ModelProviderTags.RequiresSignIn],
+    packages: [], // add any default package(s) as needed
+    collectInputFor: [
+      {
+        inputType: "text",
+        key: "apiBase",
+        label: "API Base",
+        placeholder: "e.g. https://api.logikhub.com",
+        required: true,
+      },
+    ],
+  },
   replicate: {
     title: "Replicate",
     provider: "replicate",

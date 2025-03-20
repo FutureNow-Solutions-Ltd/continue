@@ -1,5 +1,6 @@
 export enum ModelProviderTags {
   RequiresApiKey = "Requires API Key",
+  RequiresSignIn = "Requires Sign-In", // LogikHub
   Local = "Local",
   Free = "Free",
   OpenSource = "Open-Source",
@@ -7,7 +8,8 @@ export enum ModelProviderTags {
 
 export const MODEL_PROVIDER_TAG_COLORS = {
   [ModelProviderTags.RequiresApiKey]: "#FF0000",
-  [ModelProviderTags.Local]: "#00bb00",
+  [ModelProviderTags.RequiresSignIn]: "#FF8800", // Orange (LogikHub)
+  [ModelProviderTags.Local]: "#00BB00",
   [ModelProviderTags.OpenSource]: "#0033FF",
-  [ModelProviderTags.Free]: "#ffff00",
+  [ModelProviderTags.Free]: "#FFFF00",
 };
