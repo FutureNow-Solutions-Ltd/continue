@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import LogikHubAuthProvider from "../../../extensions/vscode/src/stubs/LogikHubAuthProvider";
+import { LogikHubAuthenticationProvider } from "../../../extensions/vscode/src/stubs/LogikHubAuthProvider";
 import { CompletionOptions, LLMOptions } from "../../index.js";
 import { BaseLLM } from "../index.js";
 import { streamSse } from "../stream.js";
@@ -23,7 +23,7 @@ class LogikHub extends BaseLLM {
       vscode.authentication.registerAuthenticationProvider(
         "logikhub", // This identifier must match when using getSession.
         "LogikHub", // Display name.
-        new LogikHubAuthProvider(),
+        new LogikHubAuthenticationProvider(),
         { supportsMultipleAccounts: false },
       );
       authProviderRegistered = true;

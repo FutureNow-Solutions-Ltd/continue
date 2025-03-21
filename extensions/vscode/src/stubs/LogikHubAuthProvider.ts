@@ -4,9 +4,9 @@ export class LogikHubAuthenticationProvider
   implements vscode.AuthenticationProvider
 {
   // An event emitter to notify when sessions change.
-  private _onDidChangeSessions: vscode.EventEmitter<vscode.AuthenticationSessionsChangeEvent> =
-    new vscode.EventEmitter<vscode.AuthenticationSessionsChangeEvent>();
-  public readonly onDidChangeSessions: vscode.Event<vscode.AuthenticationSessionsChangeEvent> =
+  private _onDidChangeSessions: vscode.EventEmitter<vscode.AuthenticationProviderAuthenticationSessionsChangeEvent> =
+    new vscode.EventEmitter<vscode.AuthenticationProviderAuthenticationSessionsChangeEvent>();
+  public readonly onDidChangeSessions: vscode.Event<vscode.AuthenticationProviderAuthenticationSessionsChangeEvent> =
     this._onDidChangeSessions.event;
 
   // In-memory session storage.
@@ -28,18 +28,18 @@ export class LogikHubAuthenticationProvider
   async createSession(scopes: string[]): Promise<vscode.AuthenticationSession> {
     // Trigger a sign-in process. Replace this with your actual LogikHub sign-in logic.
     const accessToken = await loginhubSignIn();
-    const account: vscode.AuthenticationAccount = {
+    const account = {
       id: "user@logikhub",
       label: "LogikHub User",
     };
 
     // Create a new session with a unique id.
-    const session = new vscode.AuthenticationSession(
-      Date.now().toString(), // simple unique session ID for demo purposes
+    const session = {
+      id: Date.now().toString(), // simple unique session ID for demo purposes
       scopes,
       accessToken,
-      [account],
-    );
+      account: account,
+    } as vscode.AuthenticationSession;
 
     // Store and emit session change.
     this.sessions.push(session);
